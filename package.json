@@ -1,0 +1,28 @@
+{
+	"name": "kraslice_api",
+	"version": "1.0.0",
+	"description": "Ecommerce websites API for supplying data to the front-end ecommerce store, and managing data from the administration APP",
+	"main": "server.js",
+	"scripts": {
+		"start": "nodemon server.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Jiri Lenner",
+	"license": "ISC",
+	"dependencies": {
+		"connect-history-api-fallback": "^1.6.0",
+		"cors": "^2.8.5",
+		"dotenv": "^14.3.2",
+		"express": "^4.17.3",
+		"mongoose": "^5.13.14",
+		"morgan": "^1.10.0",
+		"node-fetch": "^3.2.3",
+		"nodemailer": "^6.7.2",
+		"path": "^0.12.7",
+		"stripe": "^8.215.0",
+		"validator": "^13.7.0"
+	},
+	"engines": {
+		"node": ">=10.0.0"
+	}
+}

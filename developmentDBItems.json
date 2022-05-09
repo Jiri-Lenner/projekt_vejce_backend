@@ -1,0 +1,28 @@
+[
+	{
+		"_id": {
+			"$oid": "623da366aaf78df564871b57"
+		},
+		"cat": ["eggs"],
+		"name": "Modrá slepičí kraslice",
+		"description": "Krásna slepičí kraslice! Ručně malovaná ručně míchanými barvami na míru profesionální malířkou kraslic s léty zkušeností.",
+		"eggType": ["Slepičí"],
+		"packageQuantity": 1,
+		"price": 200,
+		"frontImg": "slepBlue.jpg",
+		"imgs": ["slepBlue.jpg"]
+	},
+	{
+		"_id": {
+			"$oid": "623da366aaf78df564871b57"
+		},
+		"cat": ["eggs"],
+		"name": "Modrá slepičí kraslice",
+		"description": "Krásna slepičí kraslice! Ručně malovaná ručně míchanými barvami na míru profesionální malířkou kraslic s léty zkušeností.",
+		"eggType": ["Slepičí"],
+		"packageQuantity": 1,
+		"price": 200,
+		"frontImg": "slepBlue.jpg",
+		"imgs": ["slepBlue.jpg"]
+	}
+]
