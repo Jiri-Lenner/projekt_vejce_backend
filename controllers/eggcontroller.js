@@ -2,8 +2,19 @@ const catchAsync = require('../utils/catchasync.js');
 const appError = require('../utils/apperror.js');
 const Egg = require('../model/eggmodel.js');
 
-// handler functions
-exports.getAllEggs = catchAsync(async (req, res, next) => {
+/**
+ * @typedef { import('express').Request } Request
+ * @typedef { import('express').Response } Response
+ * @typedef { import('express').NextFunction } NextFunction
+ */
+
+/**
+ * MW: Gets all the egg store items
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @description Middleware for returning all egg store items from database
+ */
+exports.getAllEggs = catchAsync(async (req, res) => {
 	// EXECUTE QUERY
 
 	const eggs = await Egg.find();
@@ -16,6 +27,13 @@ exports.getAllEggs = catchAsync(async (req, res, next) => {
 	});
 });
 
+/**
+ * MW: Gets the specific egg store item
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @param {NextFunction} next Express next function
+ * @description Middleware for returning a specific egg store item by id from database
+ */
 exports.getEgg = catchAsync(async (req, res, next) => {
 	const egg = await Egg.findById(req.params.id);
 
@@ -34,7 +52,13 @@ exports.getEgg = catchAsync(async (req, res, next) => {
 	});
 });
 
-exports.createEgg = catchAsync(async (req, res, next) => {
+/**
+ * MW: Creates new egg store items
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @description Middleware for creating new egg store items and adding them into database
+ */
+exports.createEgg = catchAsync(async (req, res) => {
 	const newEgg = await Egg.create(req.body);
 
 	res.status(201).json({
@@ -43,6 +67,13 @@ exports.createEgg = catchAsync(async (req, res, next) => {
 	});
 });
 
+/**
+ * MW: Updates egg store items
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @param {NextFunction} next Express next function
+ * @description Middleware for updating egg store items that are already in database
+ */
 exports.updateEgg = catchAsync(async (req, res, next) => {
 	const egg = await Egg.findByIdAndUpdate(
 		req.params.id,
@@ -65,6 +96,13 @@ exports.updateEgg = catchAsync(async (req, res, next) => {
 	});
 });
 
+/**
+ * MW: Deletes eggs store items
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @param {NextFunction} next Express next function
+ * @description Middleware for deleting egg store items from database
+ */
 exports.deleteEgg = catchAsync(async (req, res, next) => {
 	const egg = await Egg.findByIdAndDelete(req.params.id);
 

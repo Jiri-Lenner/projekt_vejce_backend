@@ -20,6 +20,19 @@ const transporter = nodemailer.createTransport({
 	preview: false,
 });
 
+/**
+ * @typedef { import('express').Request } Request
+ * @typedef { import('express').Response } Response
+ * @typedef { import('express').NextFunction } NextFunction
+ */
+
+/**
+ * MW: Confirms online payment
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @param {NextFunction} next Express next function
+ * @description Middleware for handling confirmation of online payment from stripe
+ */
 exports.onlineOrder = catchAsync(async (req, res, next) => {
 	const endpointSecret =
 		process.env.STRIPE_ENDPOINT_SECRET;
@@ -98,6 +111,13 @@ exports.onlineOrder = catchAsync(async (req, res, next) => {
 	res.status(200).send();
 });
 
+/**
+ * MW: Order hanler
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @param {NextFunction} next Express next function
+ * @description Middleware for creating orders (for both payment types)
+ */
 exports.order = catchAsync(async (req, res, next) => {
 	const data = req.body.data;
 	if (!data) {

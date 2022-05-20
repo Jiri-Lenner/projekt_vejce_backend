@@ -41,6 +41,20 @@ const sendErrorProd = (err, res) => {
 	}
 };
 
+/**
+ * @typedef { Error } Error
+ * @typedef { import('express').Request } Request
+ * @typedef { import('express').Response } Response
+ */
+
+/**
+ * MW: Error hanler
+ * @param {Error} err Error object
+ * @param {Request} req Express request object
+ * @param {Response} res Express response object
+ * @description Middleware for error hanling of errors related to database
+ */
+
 module.exports = (err, req, res, next) => {
 	err.statusCode = err.statusCode || 500; // 500 => internal server error
 	err.status = err.status || 'error';

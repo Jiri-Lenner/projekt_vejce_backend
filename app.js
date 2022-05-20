@@ -9,6 +9,7 @@ const globalErrorHandler = require('./controllers/errorcontroller.js');
 
 const eggRouter = require('./routes/eggroutes.js');
 const orderRouter = require('./routes/orderroutes.js');
+const userRouter = require('./routes/userroutes.js');
 
 const dbcleaner = require('./model/dbcleaner');
 
@@ -36,8 +37,9 @@ const staticDist = express.static(
 app.use('/public', staticPublic);
 
 // router mounting
-app.use('/api/v1/eggs', eggRouter);
-app.use('/api/v1/order', orderRouter);
+app.use('/api/v1/eggs', express.json(), eggRouter);
+app.use('/api/v1/orders', orderRouter);
+app.use('/api/v1/users', express.json(), userRouter);
 
 app.use(staticDist); // pokud to neni ani jeden ze zminenych tak se na vsechny ostatni aplikuje tohle
 app.use(
