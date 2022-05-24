@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const userController = require('../controllers/userController.js');
+const userController = require('../controllers/usercontroller.js');
+const authController = require('../controllers/authcontroller.js');
 
 /**
  * @method POST
@@ -10,7 +11,8 @@ const userController = require('../controllers/userController.js');
  */
 router.post(
 	'/',
-	userController.protect,
+	authController.protect,
+	authController.authorization,
 	userController.createUser
 );
 
@@ -21,7 +23,8 @@ router.post(
  */
 router.post(
 	'/info',
-	userController.protect,
+	authController.protect,
+	authController.authorization,
 	userController.getAllUsers
 );
 
@@ -32,7 +35,7 @@ router.post(
  */
 router.post(
 	'/info/:id',
-	userController.protect,
+	authController.protect,
 	userController.getUser
 );
 
@@ -41,7 +44,7 @@ router.post(
  * @path /api/v1/users/login
  * @description returns token for user after authentication
  */
-router.post('/login', userController.login);
+router.post('/login', authController.login);
 
 /**
  * @method DELETE
@@ -50,7 +53,8 @@ router.post('/login', userController.login);
  */
 router.delete(
 	'/:id',
-	userController.protect,
+	authController.protect,
+	authController.authorization,
 	userController.deleteUser
 );
 
@@ -61,7 +65,8 @@ router.delete(
  */
 router.patch(
 	'/:id',
-	userController.protect,
+	authController.protect,
+	authController.authorization,
 	userController.updateUser
 );
 
