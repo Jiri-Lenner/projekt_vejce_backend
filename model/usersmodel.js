@@ -1,3 +1,4 @@
+const catchAsync = require('../utils/catchasync.js');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
