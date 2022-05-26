@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const eggController = require('../controllers/eggcontroller.js');
+const authController = require('../controllers/authcontroller.js');
 
 /**
  * @method GET
@@ -15,7 +16,11 @@ router.get('/', eggController.getAllEggs);
  * @path /api/v1/eggs
  * @description creates new egg store item
  */
-router.post('/', eggController.createEgg);
+router.post(
+	'/',
+	authController.authorization,
+	eggController.createEgg
+);
 
 /**
  * @method GET
@@ -29,13 +34,21 @@ router.get('/:id', eggController.getEgg);
  * @path /api/v1/eggs/:ids
  * @description deletes specific store item
  */
-router.delete('/:id', eggController.deleteEgg);
+router.delete(
+	'/:id',
+	authController.authorization,
+	eggController.deleteEgg
+);
 
 /**
  * @method PATCH
  * @path /api/v1/eggs/:id
  * @description updates specific store item
  */
-router.patch('/:id', eggController.updateEgg);
+router.patch(
+	'/:id',
+	authController.authorization,
+	eggController.updateEgg
+);
 
 module.exports = router;
